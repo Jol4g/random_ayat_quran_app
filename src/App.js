@@ -32,7 +32,7 @@ class App extends React.Component{
                     {advice}
                 </h1>
                 <button className="button" onClick={this.fetchAdvice}>
-                    <span className="txt">Tell me somthing</span></button>
+                    <span >Tell me somthing</span></button>
             </div>
             <footer>Made With <span>&#10084;</span> By Fedi Sarray</footer> 
             </div>
