@@ -3,18 +3,18 @@ import axios from 'axios' ;
 import './App.css';
 
 class App extends React.Component{
-    state = { advice: '' };
+    state = { text: '' };
 
     componentDidMount(){
         this.fetchAdvice();}
 
     fetchAdvice = ()=>{
-         axios.get('https://api.adviceslip.com/advice')
+         const verse = Math.floor(Math.random()*6236)+1
+         axios.get('http://api.alquran.cloud/v1/ayah/'+verse)
             .then( (response)=>{
-                const {advice} = response.data.slip;
-                const {slip_id} = response.data.slip;
-                console.log(slip_id);  
-                this.setState({ advice:advice})   ;        
+                const {text} = response.data.data;
+                console.log(text);
+                this.setState({ text:text})   ;        
             } )
             .catch( (error)=>{
                 console.error(error);
@@ -24,17 +24,17 @@ class App extends React.Component{
     }
 
     render(){
-        const {advice} = this.state;
+        const {text} = this.state;
         return (
             <div className="app">
             <div className="card"> 
                 <h1 className="heading">
-                    {advice}
+                    {text}
                 </h1>
                 <button className="button" onClick={this.fetchAdvice}>
-                    <span >Tell me somthing</span></button>
+                    <span > بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</span></button>
             </div>
-            <footer>Made With <span>&#10084;</span> By Fedi Sarray</footer> 
+            <footer><div>Happy Birthday Imen</div>Made With <span>&#10084;</span> By Fedi Sarray</footer> 
             </div>
         );
     }
